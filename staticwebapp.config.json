@@ -1,6 +1,7 @@
 {
   "routes": [
     {
+<<<<<<< HEAD
       "route": "_next/static/*",
       "headers": {
         "cache-control": "must-revalidate, max-age=15770000"
@@ -14,6 +15,9 @@
     },
     {
       "route": "/assets/*",
+=======
+      "route": "/static/*",
+>>>>>>> parent of bae2f47a (Please enter the commit message for your changes. Lines starting)
       "headers": {
         "cache-control": "must-revalidate, max-age=15770000"
       }
@@ -92,7 +96,7 @@
     },
     {
       "route": "/",
-      "allowedRoles": ["admin", "editor", "readonly", "reader"]
+      "allowedRoles": ["admin", "editor", "readonly", "reader", "authenticated", "anonymous"]
     },
     {
       "route": "/api/Public*",
@@ -105,22 +109,11 @@
   ],
   "navigationFallback": {
     "rewrite": "index.html",
-    "exclude": [
-      "_next/static/*",
-      "/css/*",
-      "public/*",
-      "assets/*",
-      "favicon.ico",
-      "robots.txt",
-      "sitemap.xml",
-      "manifest.json"
-    ]
+    "exclude": ["/static/*.{png,jpg,gif}", "/css/*"]
   },
   "responseOverrides": {
     "401": {
-      "redirect": "/.auth/login/aad?post_login_redirect_uri=.referrer",
-      "statusCode": 302,
-      "exclude": ["/assets/illustrations/*.{png,jpg,gif}", "/css/*"]
+      "rewrite": "/401"
     },
     "403": {
       "rewrite": "/403"
